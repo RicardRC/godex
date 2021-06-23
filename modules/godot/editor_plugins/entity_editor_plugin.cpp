@@ -434,8 +434,8 @@ void EntityEditor::create_component_inspector(StringName p_component_name, VBoxC
 					prop = editor;
 
 				} break;
-				case Variant::QUAT: {
-					EditorPropertyQuat *editor = memnew(EditorPropertyQuat);
+				case Variant::QUATERNION: {
+					EditorPropertyQuaternion *editor = memnew(EditorPropertyQuaternion);
 					SETUP_MATH_RANGE_WITH_STEP(editor, e, double);
 					prop = editor;
 
@@ -452,8 +452,8 @@ void EntityEditor::create_component_inspector(StringName p_component_name, VBoxC
 					prop = editor;
 
 				} break;
-				case Variant::TRANSFORM: {
-					EditorPropertyTransform *editor = memnew(EditorPropertyTransform);
+				case Variant::TRANSFORM3D: {
+					EditorPropertyTransform3D *editor = memnew(EditorPropertyTransform3D);
 					SETUP_MATH_RANGE_WITH_STEP(editor, e, double);
 					prop = editor;
 
@@ -706,7 +706,7 @@ void EditorInspectorPluginEntity::parse_begin(Object *p_object) {
 
 EntityEditorPlugin::EntityEditorPlugin(EditorNode *p_node) {
 	Ref<EditorInspectorPluginEntity> entity_plugin;
-	entity_plugin.instance();
+	entity_plugin.instantiate();
 	entity_plugin->editor = p_node;
 
 	EditorInspector::add_inspector_plugin(entity_plugin);
